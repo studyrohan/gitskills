@@ -74,7 +74,7 @@ p=p(t),t belong to【0，1】
 
 参数连续性：C0连续：指几何位置连接。
 
-​						C1连续：不仅连接且倒数相等，即相切
+​						C1连续：不仅连接且导数相等，即相切
 
 ​						2阶连续，二阶连续，切向量的变化率在交接处相等。
 
@@ -97,3 +97,55 @@ G2连续: 在结合处满足G1连续的前提下，并有公共的曲率
 ## 几何图形的参数形式，几何形式
 
 参数形式：直方程式，x,y,z等于关于t的参数，直观的求值
+
+
+
+## bezier曲线
+
+用曲线拟合fx的时候，可以把曲线表示为许多小线段fai x之和,fai x就称为基函数
+
+在汽车设计的时候，先用折线段画出大致的轮廓，再用光滑的参数曲线逼近这个折线多边形。
+
+![1630683016894](C:\Users\eddy\AppData\Roaming\Typora\typora-user-images\1630683016894.png)
+
+基函数是用来计算和显示的，因此经常选择用多项式来表达。
+
+![1630683129078](C:\Users\eddy\AppData\Roaming\Typora\typora-user-images\1630683129078.png)
+
+bezier曲线的二次形式，三次形式
+
+![1630808244897](C:\Users\eddy\AppData\Roaming\Typora\typora-user-images\1630808244897.png)
+
+![1630808461954](C:\Users\eddy\AppData\Roaming\Typora\typora-user-images\1630808461954.png)
+
+![1630808559873](C:\Users\eddy\AppData\Roaming\Typora\typora-user-images\1630808559873.png)
+
+bezier曲线的重要性质，同等比例处取值，再进行连线，非常直观的表述出来曲线上点的由来以及变化的过程，也又一次证明了曲线上各点，只和控制点的位置有关系。是控制多边形的近似曲线。
+
+
+
+![1630811102134](C:\Users\eddy\AppData\Roaming\Typora\typora-user-images\1630811102134.png)
+
+### 实际描述
+
+在实际的几何设计过程中，一条bezier曲线往往难以表达复杂的曲线，这是因为由于特征多项式顶点数的增加，会导致bezier曲线的次数越来越高，而高阶多项式会带来计算上的困难。因此一般采用分段设计，再把得到了一段一段的bezier曲线连起来。
+
+要求：保证G0连续，点是连接在一块的，p(n) = Q(0)
+
+G1连续，导数项连续，末端点的导数，起始点的导数与临近点的连线方向相等，所以就是保证P(n-1),p(n)same to Q(0),Q(1)on the same line
+
+### bezier曲线的升阶与降阶
+
+升阶:保证曲线的形状和方向保持不变，但是要增加顶点个数。
+
+<img src="C:\Users\eddy\AppData\Roaming\Typora\typora-user-images\1630813919860.png" alt="1630813919860" style="zoom:50%;" />
+
+![1630814197985](C:\Users\eddy\AppData\Roaming\Typora\typora-user-images\1630814197985.png)
+
+升阶与降阶的重要性
+
+1 他是CAD系统之间数据传递与交换的需要
+
+2 他是系统中分段线性逼近的需要，通过逐次降阶，把曲面转换为直线平面，便于求交和曲面绘制。
+
+3 T他是外形信息压缩的需要，降阶处理之后可以减少存储的信息量。
